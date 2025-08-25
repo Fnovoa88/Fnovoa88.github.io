@@ -31,4 +31,19 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // Configure spinBoxValorEspecificado
+    const spinBox = document.getElementById('spinBoxValorEspecificado');
+    if (spinBox) {
+        const defaultValue = -99999;
+        const showPlaceholder = () => {
+            if (spinBox.value === '0' || spinBox.value === '') {
+                spinBox.value = '';
+                spinBox.placeholder = 'No establecido';
+            }
+        };
+        showPlaceholder();
+        spinBox.addEventListener('input', showPlaceholder);
+        spinBox.getValue = () => spinBox.value === '' ? defaultValue : Number(spinBox.value);
+    }
+
 });
